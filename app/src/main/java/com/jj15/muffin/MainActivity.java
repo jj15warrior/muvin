@@ -5,7 +5,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.location.Location;
+import android.graphics.Canvas;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -14,12 +14,9 @@ import android.widget.Button;
 
 import androidx.core.app.ActivityCompat;
 
-import org.osmdroid.api.IGeoPoint;
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
-import org.osmdroid.util.BoundingBox;
 import org.osmdroid.util.GeoPoint;
-import org.osmdroid.util.LocationUtils;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
 
@@ -27,6 +24,12 @@ import java.util.List;
 
 public class MainActivity extends Activity {
     MapView map = null;
+
+    public void updateFunct(List<GeoPoint> points, MapView map){
+        Canvas canvas = new Canvas();
+        Drawer drawer = new Drawer();
+        drawer.mapFixedList(points, canvas, map);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,8 +56,16 @@ public class MainActivity extends Activity {
         map.getController().setZoom(13.0);
         map.getController().setCenter(new GeoPoint(52.2068,21.0495)); // center on Warsaw, if we can't get the user's location
         map.setTileSource(TileSourceFactory.MAPNIK);
+        map.setMultiTouchControls(true);
 
-        LocationListener location = new Locator(map); // creating a modified location listener
+        LocationListener location = new Locator(map);// creating a modified location listener
+        /*
+            TODO: add working callback for drawing user location
+            TODO: write a server and not push its address to github
+
+         */
+
+
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, location); // requesting location updates
 
         //when the "center" button is clicked, we center on the user's location (from Locator class)
@@ -79,7 +90,5 @@ public class MainActivity extends Activity {
         super.onPause();
         map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
     }
-    public IGeoPoint toIGeoPoint(GeoPoint gp) {
-        return (IGeoPoint) gp;
-    }
+
 }

@@ -15,6 +15,8 @@ public class Locator implements LocationListener {
         this.map = map;
     }
 
+
+
     public GeoPoint getLocation() {
         return myLocation;
     }
