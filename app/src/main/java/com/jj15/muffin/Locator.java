@@ -2,17 +2,21 @@ package com.jj15.muffin;
 
 import android.location.LocationListener;
 import android.os.Bundle;
+import android.widget.RelativeLayout;
 
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
-import org.osmdroid.views.Projection;
 
 public class Locator implements LocationListener {
     public GeoPoint myLocation = new GeoPoint(0.0, 0.0);
     private MapView map;
+    private Drawer drawer;
+    private RelativeLayout relativeLayout;
 
-    public Locator(MapView map) {
+    public Locator(MapView map, Drawer drawer, RelativeLayout relativeLayout) {
         this.map = map;
+        this.drawer = drawer;
+        this.relativeLayout = relativeLayout;
     }
 
 
@@ -23,9 +27,12 @@ public class Locator implements LocationListener {
 
     @Override
     public void onLocationChanged(android.location.Location location) {
-        myLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
-        System.out.println("Location changed: " + myLocation.toString());
-        Projection projection = map.getProjection();
+        Thread newThread = new Thread(() -> {
+            myLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
+            drawer.mapFixedPoint(myLocation, map, relativeLayout);
+            relativeLayout.invalidate();
+        });
+        newThread.start();
     }
 
     @Override

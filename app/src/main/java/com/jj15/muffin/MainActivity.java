@@ -10,7 +10,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import androidx.core.app.ActivityCompat;
 
@@ -24,12 +26,7 @@ import java.util.List;
 
 public class MainActivity extends Activity {
     MapView map = null;
-
-    public void updateFunct(List<GeoPoint> points, MapView map){
-        Canvas canvas = new Canvas();
-        Drawer drawer = new Drawer();
-        drawer.mapFixedList(points, canvas, map);
-    }
+    private RelativeLayout relativeLayout;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,15 +55,26 @@ public class MainActivity extends Activity {
         map.setTileSource(TileSourceFactory.MAPNIK);
         map.setMultiTouchControls(true);
 
-        LocationListener location = new Locator(map);// creating a modified location listener
+
         /*
             TODO: add working callback for drawing user location
             TODO: write a server and not push its address to github
 
          */
 
+        //initialize customview
+        relativeLayout = findViewById(R.id.idRLView);
 
+        // calling our  paint view class and adding
+        // its view to our relative layout.
+        Drawer drawer = new Drawer(this);
+        relativeLayout.addView(drawer);
+
+        //creating a modified location listener
+        LocationListener location = new Locator(map, drawer, relativeLayout);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, location); // requesting location updates
+
+
 
         //when the "center" button is clicked, we center on the user's location (from Locator class)
         Button centerOnLocation = (Button) findViewById(R.id.findme);
