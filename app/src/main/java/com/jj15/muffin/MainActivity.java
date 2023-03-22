@@ -6,12 +6,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.ZoomButtonsController;
 
 import androidx.core.app.ActivityCompat;
 
@@ -21,10 +26,13 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
 
+import kotlin.Pair;
+
 public class MainActivity extends Activity {
     MapView map = null;
     private RelativeLayout relativeLayout;
     CacheNetController cacheNetController = new CacheNetController();
+    DisplayMetrics displayMetrics = new DisplayMetrics();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,13 +54,13 @@ public class MainActivity extends Activity {
 
 
 
-        map = (MapView) findViewById(R.id.map);
+        map = findViewById(R.id.map);
         map.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);
         map.getController().setZoom(13.0);
         map.getController().setCenter(new GeoPoint(52.2068,21.0495)); // center on Warsaw, if we can't get the user's location
         map.setTileSource(TileSourceFactory.MAPNIK);
         map.setMultiTouchControls(true);
-
+        displayMetrics = getResources().getDisplayMetrics();
 
 
         /*
@@ -85,7 +93,31 @@ public class MainActivity extends Activity {
 
         //when the "center" button is clicked, we center on the user's location (from Locator class)
         Button centerOnLocation = (Button) findViewById(R.id.findme);
-        // TODO: add graphic "target" button with no background
+
+        map.setOnTouchListener(new MapView.OnTouchListener() { // this is a hacky way to get the coordinates of a click on the map
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                map.onTouchEvent(event); // this is needed to make the map move
+                map.invalidate();
+                drawer.invalidate();
+                if (event.getAction() == MotionEvent.ACTION_DOWN){
+                    int x = (int) event.getX();
+                    int y = (int) event.getY();
+                    System.out.println("X: " + ((float) x)/displayMetrics.widthPixels + " Y: " + ((float) y)/displayMetrics.heightPixels); // todo: remove this
+
+                    for(Pair<Point, String> p : drawer.centers){ // todo: optimize with getNearby not getAll
+                        if(Math.abs(p.getFirst().x - x) < 50 && Math.abs(p.getFirst().y - y) < 50){ // this line checks if coords are inside a pin
+                            System.out.println("Clicked on pin: "+p.getSecond()); // todo: remove this
+                            PinView pinView = new PinView(p.getSecond(), cacheNetController, MainActivity.this);
+                            pinView.run();
+                        }
+                    }
+                }
+
+                return false; // so we quit the listener
+            }
+        });
+
 
         centerOnLocation.setOnClickListener(v -> {
             GeoPoint myLocation = ((Locator) location).getLocation();
@@ -105,5 +137,12 @@ public class MainActivity extends Activity {
         super.onPause();
         map.onPause();  //needed for compass, my location overlays, v6.0.0 and up
     }
-
+    @Override
+    public void onBackPressed() {
+        if(findViewById(R.id.view) != null){
+            return;
+        }else{
+            onCreate(null);
+        }
+    }
 }
