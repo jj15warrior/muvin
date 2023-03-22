@@ -56,10 +56,9 @@ public class MainActivity extends Activity {
         map.setMultiTouchControls(true);
 
 
-        /*
-            TODO: add working callback for drawing user location
-            TODO: write a server and not push its address to github
 
+        /*
+            TODO: write a server and not push it's address to github
          */
 
         //initialize customview

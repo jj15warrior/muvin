@@ -9,25 +9,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9394f37-5263-4d82-af26-394874580f28" name="Changes" comment="all">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/AssetLoader.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/PinComment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/PinFull.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/PinMinimal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Pinner.java" afterDir="false" />
+    <list default="true" id="a9394f37-5263-4d82-af26-394874580f28" name="Changes" comment="fuckton of changes:&#10;location image works and moves;&#10;most datatypes designed">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/CacheNetController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/stripped.dir/layout/root.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Drawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Drawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Locator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Locator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/root.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/root.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,12 +110,15 @@
     "last_directory_selection": "/home/jj15/AndroidStudioProjects/muffin/app/src/main/res/drawable",
     "last_opened_file_path": "/home/jj15/AndroidStudioProjects/muffin/app/src/main/res/drawable",
     "memory.settings.postsync.last.time.stamp": "1679173669692",
-    "project.structure.last.edited": "Dependencies",
+    "project.structure.last.edited": "Build Variants",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "experimental"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
+  <component name="PsdUISettings">
+    <option name="LAST_EDITED_BUILD_TYPE" value="release" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.jj15.muffin" />
@@ -332,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679187562729</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fuckton of changes:&#10;location image works and moves;&#10;most datatypes designed">
+      <created>1679343501465</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679343501465</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -348,7 +351,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="all" />
-    <option name="LAST_COMMIT_MESSAGE" value="all" />
+    <MESSAGE value="fuckton of changes:&#10;location image works and moves;&#10;most datatypes designed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fuckton of changes:&#10;location image works and moves;&#10;most datatypes designed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
