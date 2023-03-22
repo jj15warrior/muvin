@@ -11,30 +11,22 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
 
 public class Drawer extends View {
     // below we are creating variables for our paint
     Paint otherPaint, outerPaint, textPaint;
-
+    public boolean offlinetesting = true;
     public Point points_global = new Point();
 
     Canvas canvas_global = new Canvas();
     private MapView map = null;
     private RelativeLayout relativeLayout = null;
     private GeoPoint GeoPoints_global;
+    private CacheNetController cacheNetController;
 
     public Drawer(Context context) {
         super(context);
@@ -78,10 +70,11 @@ public class Drawer extends View {
     }
 
 
-    public void mapFixedPoint(GeoPoint point, MapView map, RelativeLayout relativeLayout) {
+    public void mapFixedPoint(GeoPoint point, MapView map, RelativeLayout relativeLayout, CacheNetController cacheNetController) {
         this.map = map;
         this.relativeLayout = relativeLayout;
         this.GeoPoints_global = point;
+        this.cacheNetController = cacheNetController;
     }
 
     @Override
@@ -92,15 +85,20 @@ public class Drawer extends View {
             AssetLoader assetLoader = new AssetLoader();
             //canvas.drawCircle(points_global.x, points_global.y, 20, outerPaint);
             Bitmap bmp = null;
-
-            //catch IOException, but it is not necessary because we are sure that the file exists
-
             try {
                 bmp = assetLoader.myLocationBMP(getContext());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
             canvas.drawBitmap(bmp, points_global.x-25, points_global.y-25, null);
+
+            for(PinMinimal pin : cacheNetController.getAllPins(offlinetesting)) {
+                GeoPoint pinPoint = new GeoPoint(pin.lat, pin.lon);
+                Point pinPointPixels = map.getProjection().toPixels(pinPoint, null);
+                otherPaint = cacheNetController.getPinMinimal(pin.uuid, offlinetesting).aroundColor;
+                canvas.drawCircle(pinPointPixels.x, pinPointPixels.y, 35, otherPaint);
+                canvas.drawBitmap(assetLoader.fetchPinmg("testico.png", getContext()), pinPointPixels.x-30, pinPointPixels.y-30, otherPaint);
+            }
         }
         invalidate();
     }

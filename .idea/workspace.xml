@@ -9,7 +9,23 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9394f37-5263-4d82-af26-394874580f28" name="Changes" comment="added NetController template" />
+    <list default="true" id="a9394f37-5263-4d82-af26-394874580f28" name="Changes" comment="added NetController template">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/CacheO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/AssetLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/AssetLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/CacheNetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/CacheNetController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Drawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Drawer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Locator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Locator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/PinMinimal.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/PinMinimal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/User.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -98,7 +114,7 @@
     "last_directory_selection": "/home/jj15/AndroidStudioProjects/muffin/app/src/main/res/drawable",
     "last_opened_file_path": "/home/jj15/AndroidStudioProjects/muffin/app/src/main/res/drawable",
     "memory.settings.postsync.last.time.stamp": "1679173669692",
-    "project.structure.last.edited": "Build Variants",
+    "project.structure.last.edited": "Suggestions",
     "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
@@ -349,26 +365,5 @@
     <MESSAGE value="fuckton of changes:&#10;location image works and moves;&#10;most datatypes designed" />
     <MESSAGE value="added NetController template" />
     <option name="LAST_COMMIT_MESSAGE" value="added NetController template" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Drawer.java</url>
-          <line>93</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/AssetLoader.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/AssetLoader.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

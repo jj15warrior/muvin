@@ -5,12 +5,11 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.graphics.Canvas;
+import android.graphics.Paint;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
@@ -22,11 +21,10 @@ import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
 
-import java.util.List;
-
 public class MainActivity extends Activity {
     MapView map = null;
     private RelativeLayout relativeLayout;
+    CacheNetController cacheNetController = new CacheNetController();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,15 +62,25 @@ public class MainActivity extends Activity {
         //initialize customview
         relativeLayout = findViewById(R.id.idRLView);
 
+        Paint paint = new Paint();
+        paint.setStyle(Paint.Style.FILL);
+        paint.setColor(getResources().getColor(R.color.purple_200));
+
+        String uuid = cacheNetController.prefetchUuid(true);
+
+        PinMinimal tmp = new PinMinimal(52.2068, 21.0495, "test", "no description", null, paint, uuid);
+        cacheNetController.addPin(tmp, true);
+
         // calling our  paint view class and adding
         // its view to our relative layout.
         Drawer drawer = new Drawer(this);
         relativeLayout.addView(drawer);
 
         //creating a modified location listener
-        LocationListener location = new Locator(map, drawer, relativeLayout);
+        LocationListener location = new Locator(map, drawer, relativeLayout, cacheNetController);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, location); // requesting location updates
 
+        cacheNetController.getMe().login("test", "test", true);
 
 
         //when the "center" button is clicked, we center on the user's location (from Locator class)

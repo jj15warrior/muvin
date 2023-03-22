@@ -12,11 +12,12 @@ public class Locator implements LocationListener {
     private MapView map;
     private Drawer drawer;
     private RelativeLayout relativeLayout;
-
-    public Locator(MapView map, Drawer drawer, RelativeLayout relativeLayout) {
+    private CacheNetController cacheNetController;
+    public Locator(MapView map, Drawer drawer, RelativeLayout relativeLayout, CacheNetController cacheNetController) {
         this.map = map;
         this.drawer = drawer;
         this.relativeLayout = relativeLayout;
+        this.cacheNetController = cacheNetController;
     }
 
 
@@ -29,7 +30,7 @@ public class Locator implements LocationListener {
     public void onLocationChanged(android.location.Location location) {
         Thread newThread = new Thread(() -> {
             myLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
-            drawer.mapFixedPoint(myLocation, map, relativeLayout);
+            drawer.mapFixedPoint(myLocation, map, relativeLayout, cacheNetController);
             relativeLayout.invalidate();
         });
         newThread.start();

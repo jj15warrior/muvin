@@ -1,5 +1,7 @@
 package com.jj15.muffin;
 
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.media.Image;
 
 import androidx.annotation.Nullable;
@@ -13,12 +15,15 @@ public class User {
     ArrayList<PinMinimal> pins;
     ArrayList<PinMinimal> favorites;
     String uuid;
-    User(String uname, String email, Image avatar, ArrayList<PinMinimal> pins, ArrayList<PinMinimal> favorites, String uuid) {
+    Paint color;
+
+    User(String uname, String email, Image avatar, ArrayList<PinMinimal> pins, ArrayList<PinMinimal> favorites, String uuid, Paint color) {
         this.uname = uname;
         this.email = email;
         this.avatar = avatar;
         this.pins = pins;
         this.favorites = favorites;
+        this.color = color;
         this.uuid = uuid;
     }
     public boolean login(String uname, String password,@Nullable boolean testmode) {
@@ -41,7 +46,9 @@ public class User {
             return true;
         }
         return false; //TODO: implement
-
+    }
+    User() {
+        //TODO: implement
     }
 
 }
