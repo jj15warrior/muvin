@@ -1,19 +1,33 @@
 package com.jj15.muffin;
 
-import androidx.fragment.app.Fragment;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-public class PinView extends Fragment {
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+public class PinView extends Fragment{
     String uuid;
     CacheNetController cacheNetController;
-    RootFragment mainActivity;
 
-    public PinView(String uuid, CacheNetController cacheNetController, RootFragment rootFragment) {
-        super(R.layout.pinview);
+    public PinView(String uuid, CacheNetController cacheNetController) {
         this.uuid = uuid;
         this.cacheNetController = cacheNetController;
-        this.mainActivity = rootFragment;
     }
-    void run(){
-        getActivity().navigateUpTo(getActivity().getIntent());
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.pinview, container, false);
+
+        FragmentManager fragmentManager = getParentFragmentManager();
+
+
+
+        return view;
     }
+
+
 }

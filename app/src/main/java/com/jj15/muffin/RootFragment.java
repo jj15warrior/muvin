@@ -24,10 +24,13 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.MapTileProviderBasic;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
@@ -36,12 +39,10 @@ import org.osmdroid.views.MapView;
 import kotlin.Pair;
 
 public class RootFragment extends Fragment {
-
     MapView map = null;
-    private RelativeLayout relativeLayout;
     CacheNetController cacheNetController = new CacheNetController();
     DisplayMetrics displayMetrics = new DisplayMetrics();
-
+    private View view;
 
     public RootFragment(){
         super(R.layout.root);
@@ -54,8 +55,10 @@ public class RootFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.root, container, false);
         // Initialize any views or other elements as needed
+
 
         //load/initialize the osmdroid configuration
         Context context = view.getContext();
@@ -73,13 +76,16 @@ public class RootFragment extends Fragment {
         StrictMode.setThreadPolicy(policy);
         Configuration.getInstance().load(context, PreferenceManager.getDefaultSharedPreferences(context));
 
+
+
         map = view.findViewById(R.id.map);
 
         map.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);
         map.getController().setZoom(13.0);
         map.getController().setCenter(new GeoPoint(52.2068, 21.0495)); // center on Warsaw, if we can't get the user's location
-        map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
+        map.setTileSource(TileSourceFactory.MAPNIK);
         map.setMultiTouchControls(true);
+
         displayMetrics = getResources().getDisplayMetrics();
 
 
@@ -88,7 +94,7 @@ public class RootFragment extends Fragment {
          */
 
         //initialize customview
-        relativeLayout = view.findViewById(R.id.idRL);
+        RelativeLayout relativeLayout = view.findViewById(R.id.idRL);
 
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
@@ -116,7 +122,7 @@ public class RootFragment extends Fragment {
 
         //when the "center" button is clicked, we center on the user's location (from Locator class)
         Button centerOnLocation = (Button) view.findViewById(R.id.findme);
-
+        FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
         map.setOnTouchListener(new MapView.OnTouchListener() { // this is a hacky way to get the coordinates of a click on the map
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -131,8 +137,17 @@ public class RootFragment extends Fragment {
                     for (Pair<Point, String> p : drawer.centers) { // todo: optimize with getNearby not getAll
                         if (Math.abs(p.getFirst().x - x) < 35 && Math.abs(p.getFirst().y - y) < 35) { // this line checks if coords are inside a pin
                             System.out.println("Clicked on pin: " + p.getSecond()); // todo: remove this
-                            PinView pinView = new PinView(p.getSecond(), cacheNetController, RootFragment.this);
-                            pinView.run();
+                            relativeLayout.removeAllViews();
+                            relativeLayout.removeCallbacks(null);
+                            map.removeAllViews();
+                            map.removeCallbacks(null);
+                            view.removeCallbacks(null);
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.fragment_container, new PinView(p.getSecond(), cacheNetController));
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                            fragmentManager.removeOnBackStackChangedListener(null);
+                            return false;
                         }
                     }
                 }
@@ -149,6 +164,7 @@ public class RootFragment extends Fragment {
                 map.getController().setCenter(myLocation);
             }
         });
+        this.view = view;
         return view;
     }
 
