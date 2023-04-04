@@ -99,11 +99,13 @@ public class RootFragment extends Fragment {
         PinMinimal tmp = new PinMinimal(52.2068, 21.0495, "test", "no description", null, paint, uuid);
         cacheNetController.addPin(tmp, true);
 
-        // calling our  paint view class and adding
-        // its view to our relative layout.
-        Drawer drawer = new Drawer(context);
+
+
+        Drawer drawer = new Drawer(context,map,relativeLayout);
+        drawer.mapFixedPoint(new GeoPoint(52.2068, 21.0495), cacheNetController);
         relativeLayout.addView(drawer);
-        drawer.mapFixedPoint(new GeoPoint(0.0, 0.0), map, relativeLayout, cacheNetController);
+
+        //drawer.mapFixedPoint(new GeoPoint(0.0, 0.0), map, relativeLayout, cacheNetController);
 
         //creating a modified location listener
         LocationListener location = new Locator(map, drawer, relativeLayout, cacheNetController);

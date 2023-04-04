@@ -1,6 +1,5 @@
 package com.jj15.muffin;
 
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -8,7 +7,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout;
 
@@ -30,12 +28,15 @@ public class Drawer extends View {
     public ArrayList<Pair<Point,String>> centers = new ArrayList<>();
 
     Canvas canvas_global = new Canvas();
-    private MapView map = null;
-    private RelativeLayout relativeLayout = null;
-    private GeoPoint GeoPoint_global;
-    private CacheNetController cacheNetController;
-    public Drawer(Context context) {
+    MapView map;
+    RelativeLayout relativeLayout = null;
+    GeoPoint GeoPoint_global;
+    CacheNetController cacheNetController;
+
+    public Drawer(Context context, MapView map, RelativeLayout relativeLayout) {
         super(context);
+        this.map = map;
+        this.relativeLayout = relativeLayout;
         textPaint = new Paint(Paint.LINEAR_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
         textPaint.setColor(Color.WHITE);
@@ -46,18 +47,7 @@ public class Drawer extends View {
         outerPaint.setColor(getResources().getColor(R.color.purple_200));
         otherPaint = new Paint();
     }
-    public Drawer(Context context,@Nullable AttributeSet attrs) {
-        super(context);
-        textPaint = new Paint(Paint.LINEAR_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
-        textPaint.setColor(Color.WHITE);
-
-        textPaint.setTextSize(pxFromDp(context, 24));
-        outerPaint = new Paint();
-        outerPaint.setStyle(Paint.Style.FILL);
-        outerPaint.setColor(getResources().getColor(R.color.purple_200));
-        otherPaint = new Paint();
-    }
 
     // below method is use to generate px from DP.
     public static float pxFromDp(final Context context, final float dp) {
@@ -65,9 +55,7 @@ public class Drawer extends View {
     }
 
 
-    public void mapFixedPoint(GeoPoint point, MapView map, RelativeLayout relativeLayout, CacheNetController cacheNetController) {
-        this.map = map;
-        this.relativeLayout = relativeLayout;
+    public void mapFixedPoint(GeoPoint point, CacheNetController cacheNetController) {
         this.GeoPoint_global = point;
         this.cacheNetController = cacheNetController;
     }
@@ -76,18 +64,18 @@ public class Drawer extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if(map != null && relativeLayout != null) {
+        if(map != null && relativeLayout != null && GeoPoint_global != null && cacheNetController != null) {
             AssetLoader assetLoader = new AssetLoader();
             if(GeoPoint_global.getLatitude()!=0.0 && GeoPoint_global.getLatitude()!=0.0) {
                 points_global = map.getProjection().toPixels(GeoPoint_global, null);
-                //canvas.drawCircle(points_global.x, points_global.y, 20, outerPaint);
+                canvas.drawCircle(points_global.x, points_global.y, 20, otherPaint);
                 Bitmap bmp = null;
                 try {
                     bmp = assetLoader.myLocationBMP(getContext());
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                canvas.drawBitmap(bmp, points_global.x - 25, points_global.y - 25, null);
+                canvas.drawBitmap(bmp, points_global.x - 25, points_global.y - 25, outerPaint);
             }
             centers.clear();
             for(PinMinimal pin : cacheNetController.getAllPins(offlinetesting)) {
