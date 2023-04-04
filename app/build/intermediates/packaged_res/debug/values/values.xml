@@ -10,7 +10,7 @@
     <string name="app_name">muffin</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">MapsActivity</string>
-    <style name="Theme.Muffin" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.Muffin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>

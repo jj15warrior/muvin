@@ -7,9 +7,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.RelativeLayout;
+
+import androidx.annotation.Nullable;
 
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
@@ -31,31 +34,28 @@ public class Drawer extends View {
     private RelativeLayout relativeLayout = null;
     private GeoPoint GeoPoint_global;
     private CacheNetController cacheNetController;
-    private DisplayMetrics displayMetrics = new DisplayMetrics();
     public Drawer(Context context) {
         super(context);
-        // on below line we are initializing our paint variable for our text
         textPaint = new Paint(Paint.LINEAR_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
-        // on below line we are setting color to it.
         textPaint.setColor(Color.WHITE);
 
-        // on below line we are setting text size to it.
-        // In Paint we have to add text size using px so
-        // we have created a method where we are converting dp to pixels.
         textPaint.setTextSize(pxFromDp(context, 24));
-
-        // on below line we are initializing our outer paint
         outerPaint = new Paint();
-
-        // on below line we are setting style to our paint.
         outerPaint.setStyle(Paint.Style.FILL);
-        // on below line we are setting color to it.
         outerPaint.setColor(getResources().getColor(R.color.purple_200));
+        otherPaint = new Paint();
+    }
+    public Drawer(Context context,@Nullable AttributeSet attrs) {
+        super(context);
+        textPaint = new Paint(Paint.LINEAR_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
+        textPaint.setColor(Color.WHITE);
 
-        // on below line we are creating
-        // a new variable for our paint
+        textPaint.setTextSize(pxFromDp(context, 24));
+        outerPaint = new Paint();
+        outerPaint.setStyle(Paint.Style.FILL);
+        outerPaint.setColor(getResources().getColor(R.color.purple_200));
         otherPaint = new Paint();
     }
 

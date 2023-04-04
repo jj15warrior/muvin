@@ -10,6 +10,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -55,9 +56,9 @@ public class RootFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.root, container, false);
         // Initialize any views or other elements as needed
-        System.out.println("onAttach");
+
         //load/initialize the osmdroid configuration
-        Context context = getActivity().getBaseContext();
+        Context context = view.getContext();
         Activity activity = getActivity();
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
@@ -67,13 +68,17 @@ public class RootFragment extends Fragment {
             return view;
         }
 
+        //fix osmdroid database
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        Configuration.getInstance().load(context, PreferenceManager.getDefaultSharedPreferences(context));
 
         map = view.findViewById(R.id.map);
 
         map.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);
         map.getController().setZoom(13.0);
         map.getController().setCenter(new GeoPoint(52.2068, 21.0495)); // center on Warsaw, if we can't get the user's location
-        map.setTileSource(TileSourceFactory.MAPNIK);
+        map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         map.setMultiTouchControls(true);
         displayMetrics = getResources().getDisplayMetrics();
 
@@ -83,7 +88,7 @@ public class RootFragment extends Fragment {
          */
 
         //initialize customview
-        relativeLayout = view.findViewById(R.id.idRLView);
+        relativeLayout = view.findViewById(R.id.idRL);
 
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL);
