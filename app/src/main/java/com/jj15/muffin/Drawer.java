@@ -29,12 +29,11 @@ public class Drawer extends View {
     Canvas canvas_global = new Canvas();
     private MapView map = null;
     private RelativeLayout relativeLayout = null;
-    private GeoPoint GeoPoints_global;
+    private GeoPoint GeoPoint_global;
     private CacheNetController cacheNetController;
     private DisplayMetrics displayMetrics = new DisplayMetrics();
     public Drawer(Context context) {
         super(context);
-
         // on below line we are initializing our paint variable for our text
         textPaint = new Paint(Paint.LINEAR_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
@@ -54,12 +53,6 @@ public class Drawer extends View {
         // on below line we are setting color to it.
         outerPaint.setColor(getResources().getColor(R.color.purple_200));
 
-        // on below line we are creating a display metrics
-
-        // on below line we are getting display metrics.
-        ((Activity) getContext()).getWindowManager()
-                .getDefaultDisplay()
-                .getMetrics(displayMetrics);
 
         // on below line we are creating
         // a new variable for our paint
@@ -75,25 +68,27 @@ public class Drawer extends View {
     public void mapFixedPoint(GeoPoint point, MapView map, RelativeLayout relativeLayout, CacheNetController cacheNetController) {
         this.map = map;
         this.relativeLayout = relativeLayout;
-        this.GeoPoints_global = point;
+        this.GeoPoint_global = point;
         this.cacheNetController = cacheNetController;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if(map != null && relativeLayout != null) {
-            points_global = map.getProjection().toPixels(GeoPoints_global, null);
-            AssetLoader assetLoader = new AssetLoader();
-            //canvas.drawCircle(points_global.x, points_global.y, 20, outerPaint);
-            Bitmap bmp = null;
-            try {
-                bmp = assetLoader.myLocationBMP(getContext());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            canvas.drawBitmap(bmp, points_global.x-25, points_global.y-25, null);
 
+        if(map != null && relativeLayout != null) {
+            AssetLoader assetLoader = new AssetLoader();
+            if(GeoPoint_global.getLatitude()!=0.0 && GeoPoint_global.getLatitude()!=0.0) {
+                points_global = map.getProjection().toPixels(GeoPoint_global, null);
+                //canvas.drawCircle(points_global.x, points_global.y, 20, outerPaint);
+                Bitmap bmp = null;
+                try {
+                    bmp = assetLoader.myLocationBMP(getContext());
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                canvas.drawBitmap(bmp, points_global.x - 25, points_global.y - 25, null);
+            }
             centers.clear();
             for(PinMinimal pin : cacheNetController.getAllPins(offlinetesting)) {
                 GeoPoint pinPoint = new GeoPoint(pin.lat, pin.lon);
@@ -106,5 +101,6 @@ public class Drawer extends View {
             }
         }
         invalidate();
+
     }
 }
