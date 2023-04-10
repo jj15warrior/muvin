@@ -64,28 +64,31 @@ public class Drawer extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if(map != null && GeoPoint_global != null && cacheNetController != null) {
+        if(map != null && GeoPoint_global != null && cacheNetController != null) { // failsafe if drawer is called before map is loaded
             AssetLoader assetLoader = new AssetLoader();
-            if(GeoPoint_global.getLatitude()!=0.0 && GeoPoint_global.getLatitude()!=0.0) {
-                points_global = map.getProjection().toPixels(GeoPoint_global, null);
-                canvas.drawCircle(points_global.x, points_global.y, 20, otherPaint);
+            if(GeoPoint_global.getLatitude()!=0.0 && GeoPoint_global.getLatitude()!=0.0) { // check if the pin in not the default pin
+                points_global = map.getProjection().toPixels(GeoPoint_global, null); // convert user coords to pixels
+                canvas.drawCircle(points_global.x, points_global.y, 20, otherPaint); // draw the circle
                 Bitmap bmp = null;
                 try {
-                    bmp = assetLoader.myLocationBMP(getContext());
+                    bmp = assetLoader.myLocationBMP(getContext()); // load crosshair image from assets
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                canvas.drawBitmap(bmp, points_global.x - 25, points_global.y - 25, outerPaint);
+                canvas.drawBitmap(bmp, points_global.x - 25, points_global.y - 25, outerPaint); // draw the image in user position
             }
-            centers.clear();
-            for(PinMinimal pin : cacheNetController.getAllPins(offlinetesting)) {
-                GeoPoint pinPoint = new GeoPoint(pin.lat, pin.lon);
-                Point pinPointPixels = map.getProjection().toPixels(pinPoint, null);
-                otherPaint = cacheNetController.getPinMinimal(pin.uuid, offlinetesting).aroundColor;
-                canvas.drawCircle(pinPointPixels.x, pinPointPixels.y, 35, otherPaint);
+            centers.clear(); // clear the list of pin centers to avoid duplicates
+
+            for(PinMinimal pin : cacheNetController.getAllPins(offlinetesting)) { // iterate through all pins TODO: after writing CacheNetController, change this to getAllPins()
+                GeoPoint pinPoint = new GeoPoint(pin.lat, pin.lon); // create a geopoint from the pin coords
+                Point pinPointPixels = map.getProjection().toPixels(pinPoint, null); // convert pin coords to pixels
+                otherPaint = cacheNetController.getPinMinimal(pin.uuid, offlinetesting).aroundColor; // get the color of the pin
+                canvas.drawCircle(pinPointPixels.x, pinPointPixels.y, 35, otherPaint); // draw the pin circle
                 canvas.drawBitmap(assetLoader.fetchPinmg("testico.png", getContext()), pinPointPixels.x-30, pinPointPixels.y-30, otherPaint);
-                Pair<Point,String> par = new Pair<>(pinPointPixels, pin.uuid);
-                centers.add(par);
+                // draw the pin image ^^^
+
+                Pair<Point,String> par = new Pair<>(pinPointPixels, pin.uuid); // create a pair of the pin center and the pin uuid for exporting
+                centers.add(par); // add the pair to the list of pin centers
             }
         }
         invalidate();
