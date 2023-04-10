@@ -1,7 +1,6 @@
-package com.jj15.muffin;
+package com.jj15.muffin.structures;
 
-import android.graphics.Bitmap;
-import android.graphics.Color;
+import com.jj15.muffin.views.PinComment;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.jj15.muffin;
+package com.jj15.muffin.storage;
 
 /*
  * used as c++ #define

@@ -1,4 +1,4 @@
-package com.jj15.muffin;
+package com.jj15.muffin.views;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,7 +9,10 @@ import android.widget.ScrollView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
+
+import com.jj15.muffin.CacheNetController;
+import com.jj15.muffin.R;
+import com.jj15.muffin.views.PinComment;
 
 public class PinView extends Fragment{
     String uuid;

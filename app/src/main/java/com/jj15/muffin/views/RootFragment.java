@@ -1,4 +1,4 @@
-package com.jj15.muffin;
+package com.jj15.muffin.views;
 
 import android.Manifest;
 import android.app.Activity;
@@ -26,11 +26,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
+
+import com.jj15.muffin.CacheNetController;
+import com.jj15.muffin.Drawer;
+import com.jj15.muffin.Locator;
+import com.jj15.muffin.R;
+import com.jj15.muffin.structures.PinMinimal;
+import com.jj15.muffin.views.PinView;
 
 import org.osmdroid.config.Configuration;
-import org.osmdroid.tileprovider.MapTileProviderBasic;
 import org.osmdroid.tileprovider.modules.SqlTileWriter;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;

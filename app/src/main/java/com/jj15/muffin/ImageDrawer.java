@@ -1,9 +1,10 @@
 package com.jj15.muffin;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.view.View;
+
+import com.jj15.muffin.structures.ImgInfo;
 
 import java.util.ArrayList;
 

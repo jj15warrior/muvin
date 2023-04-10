@@ -6,11 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.RelativeLayout;
 
-import androidx.annotation.Nullable;
+import com.jj15.muffin.storage.AssetLoader;
+import com.jj15.muffin.structures.PinMinimal;
 
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;

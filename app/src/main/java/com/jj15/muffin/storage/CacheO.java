@@ -1,4 +1,6 @@
-package com.jj15.muffin;
+package com.jj15.muffin.storage;
+
+import com.jj15.muffin.structures.PinMinimal;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package com.jj15.muffin;
+package com.jj15.muffin.views;
 
 import android.media.Image;
 import android.os.Bundle;
@@ -6,10 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
+import com.jj15.muffin.CacheNetController;
+import com.jj15.muffin.R;
+import com.jj15.muffin.structures.User;
 
 import java.util.ArrayList;
 

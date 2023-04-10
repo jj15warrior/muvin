@@ -3,6 +3,12 @@ import android.graphics.Bitmap;
 
 import androidx.annotation.Nullable;
 
+import com.jj15.muffin.storage.CacheO;
+import com.jj15.muffin.structures.PinFull;
+import com.jj15.muffin.structures.PinMinimal;
+import com.jj15.muffin.structures.User;
+import com.jj15.muffin.views.PinComment;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,14 +25,14 @@ import java.util.ArrayList;
 public class CacheNetController {
     CacheO cache = new CacheO();
     private User me;
-    CacheNetController() {
+    public CacheNetController() {
         this.setMe(new User());
     }
-    public PinFull getPinFull(String uuid,@Nullable boolean offlinemode) {
+    public PinFull getPinFull(String uuid, @Nullable boolean offlinemode) {
         //TODO: implement
         return null;
     }
-    public PinMinimal getPinMinimal(String uuid,@Nullable boolean offlinemode) {
+    public PinMinimal getPinMinimal(String uuid, @Nullable boolean offlinemode) {
         if(offlinemode) {
             for(PinMinimal pin : cache.pins) {
                 if(pin.uuid.equals(uuid)) {

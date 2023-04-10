@@ -1,6 +1,5 @@
-package com.jj15.muffin;
+package com.jj15.muffin.structures;
 
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.media.Image;
 
