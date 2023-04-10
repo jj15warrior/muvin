@@ -9,12 +9,10 @@ import org.osmdroid.views.MapView;
 
 public class Locator implements LocationListener {
     public GeoPoint myLocation = new GeoPoint(0.0, 0.0);
-    private MapView map;
     private Drawer drawer;
     private RelativeLayout relativeLayout;
     private CacheNetController cacheNetController;
     public Locator(MapView map, Drawer drawer, RelativeLayout relativeLayout, CacheNetController cacheNetController) {
-        this.map = map;
         this.drawer = drawer;
         this.relativeLayout = relativeLayout;
         this.cacheNetController = cacheNetController;

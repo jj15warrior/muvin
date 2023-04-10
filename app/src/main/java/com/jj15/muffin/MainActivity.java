@@ -30,6 +30,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.modules.SqlTileWriter;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;

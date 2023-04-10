@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -24,8 +26,16 @@ public class PinView extends Fragment{
 
         FragmentManager fragmentManager = getParentFragmentManager();
 
-
-
+        ScrollView scrollView = view.findViewById(R.id.scrollView1);
+        PinComment pinComment = new PinComment();
+        pinComment.init(uuid, cacheNetController);
+        LinearLayout linearLayout = new LinearLayout(getContext());
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
+        linearLayout.addView(pinComment.onCreateView(inflater, container, savedInstanceState));
+        linearLayout.addView(pinComment.onCreateView(inflater, container, savedInstanceState));
+        linearLayout.addView(pinComment.onCreateView(inflater, container, savedInstanceState));
+        linearLayout.addView(pinComment.onCreateView(inflater, container, savedInstanceState));
+        scrollView.addView(linearLayout);
         return view;
     }
 

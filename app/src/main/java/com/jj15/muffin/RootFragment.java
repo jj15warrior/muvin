@@ -31,6 +31,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.MapTileProviderBasic;
+import org.osmdroid.tileprovider.modules.SqlTileWriter;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
@@ -42,7 +43,6 @@ public class RootFragment extends Fragment {
     MapView map = null;
     CacheNetController cacheNetController = new CacheNetController();
     DisplayMetrics displayMetrics = new DisplayMetrics();
-    private View view;
 
     public RootFragment(){
         super(R.layout.root);
@@ -119,6 +119,15 @@ public class RootFragment extends Fragment {
 
         cacheNetController.getMe().login("test", "test", true);
 
+        Button recache = (Button) view.findViewById(R.id.recache);
+        recache.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SqlTileWriter sqlTileWriter = new SqlTileWriter();
+                map.getTileProvider().clearTileCache();
+                sqlTileWriter.purgeCache(map.getTileProvider().getTileSource().name());
+            }
+        });
 
         //when the "center" button is clicked, we center on the user's location (from Locator class)
         Button centerOnLocation = (Button) view.findViewById(R.id.findme);
@@ -164,7 +173,6 @@ public class RootFragment extends Fragment {
                 map.getController().setCenter(myLocation);
             }
         });
-        this.view = view;
         return view;
     }
 
