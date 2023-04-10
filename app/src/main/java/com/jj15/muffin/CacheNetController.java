@@ -9,6 +9,13 @@ import java.util.ArrayList;
 
 //todo: remove nullable annotations -> testing only
 
+/*
+ * this class is used like AssetLoader but for network and api based requests
+ * it will also handle data syncing based on diffs
+ * for now it is a dummy class
+ * @author jj15
+ */
+
 public class CacheNetController {
     CacheO cache = new CacheO();
     private User me;

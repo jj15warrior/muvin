@@ -20,23 +20,24 @@ import java.util.ArrayList;
 
 import kotlin.Pair;
 
+/*
+    * this class is used to draw pin circles on the map
+    * @author: jj15
+ */
+
 public class Drawer extends View {
     // below we are creating variables for our paint
     Paint otherPaint, outerPaint, textPaint;
     public boolean offlinetesting = true;
     public Point points_global = new Point();
     public ArrayList<Pair<Point,String>> centers = new ArrayList<>();
-
-    Canvas canvas_global = new Canvas();
     MapView map;
-    RelativeLayout relativeLayout = null;
     GeoPoint GeoPoint_global;
     CacheNetController cacheNetController;
 
-    public Drawer(Context context, MapView map, RelativeLayout relativeLayout) {
+    public Drawer(Context context, MapView map) {
         super(context);
         this.map = map;
-        this.relativeLayout = relativeLayout;
         textPaint = new Paint(Paint.LINEAR_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
 
         textPaint.setColor(Color.WHITE);
@@ -64,7 +65,7 @@ public class Drawer extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        if(map != null && relativeLayout != null && GeoPoint_global != null && cacheNetController != null) {
+        if(map != null && GeoPoint_global != null && cacheNetController != null) {
             AssetLoader assetLoader = new AssetLoader();
             if(GeoPoint_global.getLatitude()!=0.0 && GeoPoint_global.getLatitude()!=0.0) {
                 points_global = map.getProjection().toPixels(GeoPoint_global, null);

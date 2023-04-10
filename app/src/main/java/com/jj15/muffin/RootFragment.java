@@ -39,6 +39,8 @@ import org.osmdroid.views.MapView;
 
 import kotlin.Pair;
 
+/* main view fragment */
+
 public class RootFragment extends Fragment {
     MapView map = null;
     CacheNetController cacheNetController = new CacheNetController();
@@ -107,7 +109,7 @@ public class RootFragment extends Fragment {
 
 
 
-        Drawer drawer = new Drawer(context,map,relativeLayout);
+        Drawer drawer = new Drawer(context,map);
         drawer.mapFixedPoint(new GeoPoint(52.2068, 21.0495), cacheNetController);
         relativeLayout.addView(drawer);
 

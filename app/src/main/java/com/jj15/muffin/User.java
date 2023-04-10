@@ -8,6 +8,10 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
+/*
+ * user class. stores user data.
+ */
+
 public class User {
     String uname;
     String email;

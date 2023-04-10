@@ -17,6 +17,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
+/*
+    * this class is used to load assets from the assets folder
+    * it is used to load the location.png and the pin images
+    * it is also used to load images from the internet
+    * @author jj15
+ */
+
 
 public class AssetLoader{
     public Bitmap myLocationBMP(Context ctx) throws IOException {
