@@ -27,12 +27,9 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.jj15.muffin.CacheNetController;
 import com.jj15.muffin.Drawer;
 import com.jj15.muffin.Locator;
 import com.jj15.muffin.R;
-import com.jj15.muffin.structures.PinMinimal;
-import com.jj15.muffin.views.PinView;
 
 import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.modules.SqlTileWriter;
@@ -47,7 +44,6 @@ import kotlin.Pair;
 
 public class RootFragment extends Fragment {
     MapView map = null;
-    CacheNetController cacheNetController = new CacheNetController();
     DisplayMetrics displayMetrics = new DisplayMetrics();
 
     public RootFragment(){
@@ -106,24 +102,17 @@ public class RootFragment extends Fragment {
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(getResources().getColor(R.color.purple_200));
 
-        String uuid = cacheNetController.prefetchUuid(true);
-
-        PinMinimal tmp = new PinMinimal(52.2068, 21.0495, "test", "no description", null, paint, uuid);
-        cacheNetController.addPin(tmp, true);
-
 
 
         Drawer drawer = new Drawer(context,map);
-        drawer.mapFixedPoint(new GeoPoint(52.2068, 21.0495), cacheNetController);
+        drawer.mapFixedPoint(new GeoPoint(52.2068, 21.0495));
         relativeLayout.addView(drawer);
 
         //drawer.mapFixedPoint(new GeoPoint(0.0, 0.0), map, relativeLayout, cacheNetController);
 
         //creating a modified location listener
-        LocationListener location = new Locator(map, drawer, relativeLayout, cacheNetController);
+        Locator location = new Locator(map, drawer, relativeLayout);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, location); // requesting location updates
-
-        cacheNetController.getMe().login("test", "test", true);
 
         Button recache = (Button) view.findViewById(R.id.recache);
         recache.setOnClickListener(new View.OnClickListener() {
@@ -148,23 +137,6 @@ public class RootFragment extends Fragment {
                     int x = (int) event.getX();
                     int y = (int) event.getY();
                     System.out.println("X: " + ((float) x) / displayMetrics.widthPixels + " Y: " + ((float) y) / displayMetrics.heightPixels); // todo: remove this
-
-                    for (Pair<Point, String> p : drawer.centers) { // todo: optimize with getNearby not getAll
-                        if (Math.abs(p.getFirst().x - x) < 35 && Math.abs(p.getFirst().y - y) < 35) { // this line checks if coords are inside a pin
-                            System.out.println("Clicked on pin: " + p.getSecond()); // todo: remove this
-                            relativeLayout.removeAllViews();
-                            relativeLayout.removeCallbacks(null);
-                            map.removeAllViews();
-                            map.removeCallbacks(null);
-                            view.removeCallbacks(null);
-                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                            fragmentTransaction.replace(R.id.fragment_container, new PinView(p.getSecond(), cacheNetController));
-                            fragmentTransaction.addToBackStack(null);
-                            fragmentTransaction.commit();
-                            fragmentManager.removeOnBackStackChangedListener(null);
-                            return false;
-                        }
-                    }
                 }
 
                 return false; // so we quit the listener
@@ -173,7 +145,7 @@ public class RootFragment extends Fragment {
 
 
         centerOnLocation.setOnClickListener(v -> {
-            GeoPoint myLocation = ((Locator) location).getLocation();
+            GeoPoint myLocation = location.getLocation();
             if (myLocation.getLatitude() != 0.0 && myLocation.getLongitude() != 0.0) {
                 map.getController().animateTo(myLocation);
                 map.getController().setCenter(myLocation);
