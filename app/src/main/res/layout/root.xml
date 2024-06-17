@@ -7,11 +7,22 @@
     android:layout_height="wrap_content">
 
 
+    <TextView
+        android:id="@+id/logText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/recache"
+        app:layout_constraintEnd_toStartOf="@+id/recache"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/recache"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="clear cache"
+        android:text="@string/clear_cache"
         app:layout_constraintEnd_toEndOf="@+id/findme"
         app:layout_constraintTop_toBottomOf="@+id/findme" />
 
@@ -31,9 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </org.osmdroid.views.MapView>
+            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -75,10 +84,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText" />
+
     <RelativeLayout
+        android:id="@+id/idRL"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/idRL">
-    </RelativeLayout>
+        android:layout_height="match_parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -58,3 +58,4 @@ class Device{
         manufacturerData = new HashMap<>();
     }
 }
+

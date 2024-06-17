@@ -20,6 +20,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.LocationSettingsRequest;
 import com.google.android.gms.location.LocationSettingsResult;
 import com.google.android.gms.location.LocationSettingsStatusCodes;
+import com.jj15.muffin.RunActivity;
 
 /*
     "the simplest method to turn gps on" - Google, probably high on something
@@ -70,7 +71,7 @@ public class GoogleLocationWrapper extends AppCompatActivity
                 //final LocationSettingsStates state = result.getLocationSettingsStates();
                 switch (status.getStatusCode()) {
                     case LocationSettingsStatusCodes.SUCCESS:
-                        Intent intent = new Intent(GoogleLocationWrapper.this, ScanActivity.class);
+                        Intent intent = new Intent(GoogleLocationWrapper.this, RunActivity.class);
                         startActivity(intent); // location enabed
                         break;
                     case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
@@ -87,7 +88,7 @@ public class GoogleLocationWrapper extends AppCompatActivity
                         }
                         break;
                     case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                        intent = new Intent(GoogleLocationWrapper.this, ScanActivity.class);
+                        intent = new Intent(GoogleLocationWrapper.this, RunActivity.class);
                         startActivity(intent);
                         break;
                 }
@@ -119,7 +120,7 @@ public class GoogleLocationWrapper extends AppCompatActivity
                         break;
                     }
                 }
-                Intent intent = new Intent(GoogleLocationWrapper.this, ScanActivity.class);
+                Intent intent = new Intent(GoogleLocationWrapper.this, RunActivity.class);
                 startActivity(intent);
                 break;
         }

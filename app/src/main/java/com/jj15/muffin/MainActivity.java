@@ -3,11 +3,11 @@ package com.jj15.muffin;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.jj15.muffin.ble.GoogleLocationWrapper;
-import com.jj15.muffin.views.RootFragment;
 import static android.Manifest.permission.ACCESS_BACKGROUND_LOCATION;
 import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -15,6 +15,8 @@ import static android.Manifest.permission.BLUETOOTH;
 import static android.Manifest.permission.BLUETOOTH_ADMIN;
 import static android.Manifest.permission.BLUETOOTH_CONNECT;
 import static android.Manifest.permission.BLUETOOTH_SCAN;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -36,25 +38,26 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.Toast;
 
+import org.osmdroid.config.Configuration;
+
+import java.io.File;
+
 @RequiresApi(api = Build.VERSION_CODES.S)
 public class MainActivity extends AppCompatActivity {
 
-    public final String[] permissions = {BLUETOOTH, BLUETOOTH_SCAN, BLUETOOTH_CONNECT, BLUETOOTH_SCAN, BLUETOOTH_ADMIN, ACCESS_BACKGROUND_LOCATION, ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION};
+    public final String[] permissions = {BLUETOOTH, BLUETOOTH_SCAN, BLUETOOTH_CONNECT, BLUETOOTH_SCAN, BLUETOOTH_ADMIN, ACCESS_BACKGROUND_LOCATION, ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.viewhost);
-        System.out.println("create");
+        setContentView(R.layout.splash);
+        File osmdroidBasePath = new File(getApplicationInfo().dataDir, "osmdroid");
+        System.out.println(getApplicationInfo().dataDir);
+        osmdroidBasePath.mkdirs();
+
+        Configuration.getInstance().setOsmdroidBasePath(osmdroidBasePath);
+        Configuration.getInstance().setUserAgentValue(getApplicationInfo().packageName);
         context = getBaseContext();
         getPermissions();
-    }
-    @Override
-    public void onBackPressed() {
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-            getSupportFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed();
-        }
     }
     public Context context;
 
@@ -73,18 +76,22 @@ public class MainActivity extends AppCompatActivity {
         String to_request = permissions[last_perm_call];
         System.out.println(to_request);
         last_perm_call++;
-        requestPermissionLauncher.launch(to_request);
+        if (ActivityCompat.checkSelfPermission(context, to_request) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissionLauncher.launch(to_request);
+        }else{
+            System.out.println("perm skip");
+        }
+        getPermissions();
     }
     private final ActivityResultLauncher<String> requestPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestPermission(), isGranted -> {
-                if(!isGranted) {
-                    t("please restart the app and grant all permissions");
-                }
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(1000);
+
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
+
                 getPermissions();
             });
     ActivityResultLauncher<String[]> locationPermissionRequest =

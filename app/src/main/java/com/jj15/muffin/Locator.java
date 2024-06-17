@@ -32,7 +32,7 @@ public class Locator implements LocationListener {
     public void onLocationChanged(android.location.Location location) {
         Thread newThread = new Thread(() -> {
             myLocation = new GeoPoint(location.getLatitude(), location.getLongitude());
-            drawer.mapFixedPoint(myLocation);
+            drawer.setMyLoc(myLocation);
             relativeLayout.invalidate();
         });
         newThread.start();
