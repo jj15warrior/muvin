@@ -22,42 +22,29 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9394f37-5263-4d82-af26-394874580f28" name="Changes" comment="repurpose the project as a BLE scanner">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/BetterActivityResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/BleAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/path7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/splash.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/checksums.lock" afterDir="false" />
+    <list default="true" id="a9394f37-5263-4d82-af26-394874580f28" name="Changes" comment="README.md and some .gradle files">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/Converters.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DeviceRoomDatabase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/sha1-checksums.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/values/values.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Drawer.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Drawer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Locator.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/Locator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/BleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/BleAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/RunActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/RunActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/Device.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/GoogleLocationWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/GoogleLocationWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DeviceDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/ParseDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/ParseDispatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/ScanActivity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/views/RootFragment.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/root.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/root.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/viewhost.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,8 +109,8 @@
       <list>
         <option value="navigationResourceFile" />
         <option value="valueResourceFile" />
-        <option value="Interface" />
         <option value="layoutResourceFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -145,6 +132,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "PROJECT_TRUSTED_KEY": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -159,7 +147,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "last_directory_selection": "/home/jj15/AndroidStudioProjects/muffin/app/src/main/res/drawable",
-    "last_opened_file_path": "C:/Users/janek/AndroidStudioProjects/muvin/app/src/main/java/com/jj15/muffin/ble",
+    "last_opened_file_path": "C:/Users/janek/AndroidStudioProjects/muvin/README.md",
     "memory.settings.postsync.last.time.stamp": "1718202505176",
     "project.structure.last.edited": "Suggestions",
     "project.structure.proportion": "0.17",
@@ -187,6 +175,7 @@
       <recent name="com.jj15.muffin" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.jj15.muffin.ble" />
       <recent name="com.jj15.muffin" />
     </key>
     <key name="android.template.995223965">
@@ -449,7 +438,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718649656246</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="merge two projects, start work on drawer and ROOMDb">
+      <option name="closed" value="true" />
+      <created>1718666222309</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1718666222309</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -469,17 +466,8 @@
     <MESSAGE value="added NetController template" />
     <MESSAGE value="ah yes - loading bitmaps as pin icons works now.&#10;im gonna start writing the server now" />
     <MESSAGE value="repurpose the project as a BLE scanner" />
-    <option name="LAST_COMMIT_MESSAGE" value="repurpose the project as a BLE scanner" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/MainActivity.java</url>
-          <line>56</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="merge two projects, start work on drawer and ROOMDb" />
+    <MESSAGE value="README.md and some .gradle files" />
+    <option name="LAST_COMMIT_MESSAGE" value="README.md and some .gradle files" />
   </component>
 </project>
