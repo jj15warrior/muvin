@@ -18,8 +18,10 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
+import androidx.core.util.Function;
 
 import com.jj15.muffin.BetterActivityResult;
+import com.jj15.muffin.RunActivity;
 import com.jj15.muffin.ble.ParseDispatcher;
 
 import java.util.Collections;
@@ -112,6 +114,7 @@ public class BleAdapter extends Thread {
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
             parseDispatcher.add(result);
+
         }
     };
     private BluetoothLeScanner bleScanner;

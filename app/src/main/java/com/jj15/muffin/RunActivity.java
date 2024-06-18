@@ -1,6 +1,7 @@
 package com.jj15.muffin;
 
 import android.Manifest;
+import android.bluetooth.le.ScanResult;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -51,6 +52,16 @@ public class RunActivity extends AppCompatActivity {
         tv.setText(logmem);
     }
 
+    public void newDeviceCallback(ScanResult result){ // TODO: somehow pass this to count entries captured during a session
+        // todo: (not here) implement stats
+        // todo: save location in db
+        // todo: draw
+        // todo: log found macs
+        // todo: settings (scan power)
+        // todo: ui
+        // todo: in light mode logs are unreadable because the text is white
+
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override

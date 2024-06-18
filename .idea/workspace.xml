@@ -22,29 +22,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9394f37-5263-4d82-af26-394874580f28" name="Changes" comment="README.md and some .gradle files">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/Converters.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DeviceRoomDatabase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
+    <list default="true" id="a9394f37-5263-4d82-af26-394874580f28" name="Changes" comment="minor changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/values/values.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/BleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/BleAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/RunActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/RunActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/Device.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/Device.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DeviceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/DeviceDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/ParseDispatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/ParseDispatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/root.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/root.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/BleAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/jj15/muffin/ble/BleAdapter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -446,7 +428,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718666222309</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="rebuild some layouts, implement ROOM so there is persistence and fix some fucked up threads">
+      <option name="closed" value="true" />
+      <created>1718675069249</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1718675069249</updated>
+    </task>
+    <task id="LOCAL-00011" summary="minor changes">
+      <option name="closed" value="true" />
+      <created>1718675090997</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1718675090997</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -468,6 +466,8 @@
     <MESSAGE value="repurpose the project as a BLE scanner" />
     <MESSAGE value="merge two projects, start work on drawer and ROOMDb" />
     <MESSAGE value="README.md and some .gradle files" />
-    <option name="LAST_COMMIT_MESSAGE" value="README.md and some .gradle files" />
+    <MESSAGE value="rebuild some layouts, implement ROOM so there is persistence and fix some fucked up threads" />
+    <MESSAGE value="minor changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes" />
   </component>
 </project>
