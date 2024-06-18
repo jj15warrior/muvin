@@ -3,91 +3,112 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/relativeLayout"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-
-    <TextView
-        android:id="@+id/logText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/recache"
-        app:layout_constraintEnd_toStartOf="@+id/recache"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/recache"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/clear_cache"
-        app:layout_constraintEnd_toEndOf="@+id/findme"
-        app:layout_constraintTop_toBottomOf="@+id/findme" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/maplayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:focusable="true"
-
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <org.osmdroid.views.MapView
-            android:id="@+id/map"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/recache"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@string/clear_cache"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/findme" />
+
+        <Button
+            android:id="@+id/findme"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="center"
+            app:layout_constraintEnd_toEndOf="@+id/recache"
+            app:layout_constraintStart_toEndOf="@+id/logText"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/logText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textColor="@color/material_dynamic_neutral70"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/recache"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="settings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/logText"
+            app:layout_constraintTop_toBottomOf="@+id/recache"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="search"
+            app:layout_constraintEnd_toEndOf="@+id/settings"
+            app:layout_constraintStart_toEndOf="@+id/logText"
+            app:layout_constraintTop_toBottomOf="@+id/settings"
+            tools:ignore="HardcodedText" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <Button
-        android:id="@+id/settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="settings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pinit"
-        app:layout_constraintTop_toTopOf="@+id/pinit"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:id="@+id/search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="search"
-        app:layout_constraintBottom_toBottomOf="@+id/maplayout"
-        app:layout_constraintEnd_toStartOf="@+id/pinit"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText" />
-
-    <Button
-        android:id="@+id/pinit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PIN!"
-        app:layout_constraintBottom_toBottomOf="@+id/maplayout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="415dp"
+        android:layout_height="481dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="HardcodedText" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-    <Button
-        android:id="@+id/findme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="HardcodedText" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/maplayout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clickable="true"
+            android:focusable="true"
 
-    <RelativeLayout
-        android:id="@+id/idRL"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/idRL"
+            tools:ignore="SpeakableTextPresentCheck">
+
+            <org.osmdroid.views.MapView
+                android:id="@+id/map"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/idRL"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

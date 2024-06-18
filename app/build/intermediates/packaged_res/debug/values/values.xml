@@ -9,7 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">muffin</string>
     <string name="clear_cache">clear cache</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">MapsActivity</string>
     <style name="Theme.Muffin" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         

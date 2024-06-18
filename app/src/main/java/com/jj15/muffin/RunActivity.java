@@ -23,12 +23,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 
+import com.jj15.muffin.ble.BleAdapter;
+
+import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.modules.SqlTileWriter;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.CustomZoomButtonsController;
 import org.osmdroid.views.MapView;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -36,20 +40,18 @@ public class RunActivity extends AppCompatActivity {
     MapView map = null;
     DisplayMetrics displayMetrics = new DisplayMetrics();
     protected final BetterActivityResult<Intent, ActivityResult> activityLauncher = BetterActivityResult.registerActivityForResult(this);
-
-    void logupdate(String s){
-        Thread l = new Thread(){
-            @Override
-            public void start(){
-                super.start();
-                TextView tv = findViewById(R.id.logText);
-                tv.setText(s);
-                System.out.println(s);
-
-            }
-        };
-        l.start();
+    String logmem = "";
+    public void log(String s){
+        TextView tv = (TextView) findViewById(R.id.logText);
+        logmem += s;
+        logmem += "\n";
+        if(logmem.split("\n").length > (tv.getHeight()/tv.getLineHeight())){
+            logmem = logmem.substring(logmem.indexOf("\n"));
+        }
+        tv.setText(logmem);
     }
+
+
     @RequiresApi(api = Build.VERSION_CODES.P)
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -63,12 +65,9 @@ public class RunActivity extends AppCompatActivity {
 
         setContentView(R.layout.root);
 
-
         BleAdapter bleAdapter = new BleAdapter(context);
 
         bleAdapter.init(activityLauncher);
-        TextView tv = (TextView) findViewById(R.id.logText);
-        tv.setText("TEST");
 
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
@@ -78,12 +77,17 @@ public class RunActivity extends AppCompatActivity {
             return;
         }
 
+        File osmdroidBasePath = new File(getApplicationInfo().dataDir);
+        Configuration.getInstance().setOsmdroidBasePath(osmdroidBasePath);
+        Configuration.getInstance().setUserAgentValue("jj15's movin");
+        Configuration.setConfigurationProvider(Configuration.getInstance());
+
         map = findViewById(R.id.map);
 
         map.getZoomController().setVisibility(CustomZoomButtonsController.Visibility.NEVER);
         map.getController().setZoom(13.0);
         map.getController().setCenter(new GeoPoint(52.2068, 21.0495)); // center on Warsaw, if we can't get the user's location
-        map.setTileSource(TileSourceFactory.MAPNIK);
+        map.setTileSource(TileSourceFactory.DEFAULT_TILE_SOURCE);
         map.setMultiTouchControls(true);
 
 
@@ -140,7 +144,7 @@ public class RunActivity extends AppCompatActivity {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     int x = (int) event.getX();
                     int y = (int) event.getY();
-                    logupdate("X: " + ((float) x) / displayMetrics.widthPixels + " Y: " + ((float) y) / displayMetrics.heightPixels);
+                    log("X: " + ((float) x) / displayMetrics.widthPixels + " Y: " + ((float) y) / displayMetrics.heightPixels);
                     System.out.println("X: " + ((float) x) / displayMetrics.widthPixels + " Y: " + ((float) y) / displayMetrics.heightPixels); // todo: remove this
                 }
 
